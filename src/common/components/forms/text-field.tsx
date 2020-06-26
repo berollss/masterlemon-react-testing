@@ -2,7 +2,9 @@ import * as React from 'react';
 import { FieldRenderProps } from 'react-final-form';
 import TextFieldMui from '@material-ui/core/TextField';
 
-interface Props extends FieldRenderProps<any, any> {}
+interface Props extends FieldRenderProps<any, any> {
+  'data-testid'?: string;
+}
 
 export const TextField: React.FunctionComponent<Props> = props => {
   const {
@@ -10,6 +12,8 @@ export const TextField: React.FunctionComponent<Props> = props => {
     meta,
     ...rest
   } = props;
+
+  const dataTestid = props['data-testid'];
 
   const showError =
     ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) &&
@@ -25,6 +29,7 @@ export const TextField: React.FunctionComponent<Props> = props => {
       value={value}
       helperText={showError ? meta.error : ''}
       margin="normal"
+      data-testid={dataTestid}
     />
   );
 };
