@@ -17,6 +17,7 @@ import {
 
 interface Props {
   hotel: HotelEntityVm;
+  'data-testid'?: string;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -27,14 +28,19 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 // Todo there are some harcoded styles move them to class styles
-export const HotelCard: React.FunctionComponent<Props> = props => {
+export const HotelCard: React.FunctionComponent<Props> = (props) => {
   const { hotel } = props;
   const classes = useStyles(props);
 
   return (
-    <Card className={classes.card}>
+    <Card data-testid={props['data-testid']} className={classes.card}>
       <CardHeader
-        avatar={<Avatar aria-label="Hotel">{hotel.rating}</Avatar>}
+        data-testid="cardHeader"
+        avatar={
+          <Avatar data-testid="avatar" aria-label="Hotel">
+            {hotel.rating}
+          </Avatar>
+        }
         action={
           <IconButton>
             <MoreVertIcon />
@@ -43,7 +49,7 @@ export const HotelCard: React.FunctionComponent<Props> = props => {
         title={hotel.name}
         subheader={hotel.address}
       />
-      <CardContent>
+      <CardContent data-testid="cardContent">
         <div
           style={{
             display: 'flex',
@@ -52,6 +58,7 @@ export const HotelCard: React.FunctionComponent<Props> = props => {
           }}
         >
           <CardMedia
+            data-testid="cardMedia"
             image={hotel.picture}
             title={hotel.name}
             style={{ height: 0, paddingTop: '56.25%' }}

@@ -6,14 +6,13 @@ interface Props extends FieldRenderProps<any, any> {
   'data-testid'?: string;
 }
 
-export const TextField: React.FunctionComponent<Props> = props => {
+export const TextField: React.FunctionComponent<Props> = (props) => {
   const {
     input: { name, onChange, value, ...restInput },
     meta,
+    'data-testid': dataTestid,
     ...rest
   } = props;
-
-  const dataTestid = props['data-testid'];
 
   const showError =
     ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) &&
@@ -24,12 +23,15 @@ export const TextField: React.FunctionComponent<Props> = props => {
       {...rest}
       name={name}
       error={showError}
-      inputProps={restInput}
+      inputProps={{
+        ...restInput,
+        'data-testid': dataTestid,
+      }}
       onChange={onChange}
       value={value}
       helperText={showError ? meta.error : ''}
       margin="normal"
-      data-testid={dataTestid}
+      data-testid="textFieldMui"
     />
   );
 };
