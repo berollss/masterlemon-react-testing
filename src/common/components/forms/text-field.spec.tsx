@@ -48,4 +48,29 @@ describe('Text field component specs', () => {
     // Assert
     expect(props.input.onChange).toHaveBeenCalled();
   });
+
+  it('should show an error when meta.error is not empty and meta.touched is true', () => {
+    // Arrange
+    const props = {
+      input: {
+        name: 'input name',
+        value: 'input value',
+        onChange: jest.fn(),
+        onBlur: jest.fn(),
+        onFocus: jest.fn(),
+      } as FieldInputProps<any, any>,
+      meta: {
+        error: 'Input error',
+        touched: true,
+      },
+      'data-testid': 'textFieldTest',
+    };
+
+    // Act
+    const { getByText } = render(<TextField {...props} />);
+    const errorText = getByText('Input error') as HTMLInputElement;
+
+    // Assert
+    expect(errorText).toBeInTheDocument();
+  });
 });

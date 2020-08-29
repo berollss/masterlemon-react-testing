@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Jest single run",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.ts",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": [
         "-c",
         "./config/test/jest.json",
@@ -20,7 +20,7 @@
       "type": "node",
       "request": "launch",
       "name": "Jest watch run",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.ts",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": [
         "-c",
         "./config/test/jest.json",
@@ -36,7 +36,7 @@
       "type": "node",
       "request": "launch",
       "name": "Jest selected file run",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.ts",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "args": [
         "${fileBasenameNoExtension}",
         "-c",
